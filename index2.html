@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneers of Top Performance | روّاد الأداء المتميز</title>
+    <meta name="description" content="منصة روّاد الأداء المتميز لإدارة المشاريع، تدريب احترافي وشهادات دولية معتمدة في PMP وإدارة المشاريع.">
+    <!-- favicon removed as requested -->
+    <meta property="og:image" content="https://i.postimg.cc/XYn41mKn/Black-And-White-Modern-Initial-PB-Consulting-Logo-Design-5.png">
+    <!-- خطوط عالمية حديثة -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #dc2626 100%); }
+        /* اجعل خلفية الهيرو بيضاء ناصعة بدل الصورة */
+        .hero-bg { 
+            background: #ffffff;
+        }
+        /* أزل استخدام عنصر pseudo للصورة */
+        .hero-bg::before { display: none; }
+        .hero-bg::after { display: none; }
+        /* single-color tint overlay (adjust rgba to change tint intensity/color) */
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            /* أبيض شفاف لطبقة خفيفة بيضاء فوق الصورة */
+            background: rgba(255, 255, 255, 0.65);
+            mix-blend-mode: normal;
+            z-index: 1;
+        }
+        /* ensure inner content sits above image/tint */
+        .hero-bg > .container { position: relative; z-index: 2; }
+        .floating-animation { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: #10b981; transform: translateY(-2px); }
+        .nav-link.active { color: #10b981; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.active { transform: translateX(0); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer.active { max-height: 200px; }
+        .course-card { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: slideInUp 0.8s ease forwards; 
+        }
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .course-icon { 
+            transition: all 0.3s ease; 
+        }
+        .course-card:hover .course-icon { 
+            transform: scale(1.1) rotate(5deg); 
+        }
+
+        /* Accessible skip-link */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .skip-link:focus {
+            left: 1rem;
+            top: 1rem;
+            width: auto;
+            height: auto;
+            padding: 0.5rem 1rem;
+            background: #1e3a8a;
+            color: #fff;
+            z-index: 9999;
+            border-radius: 6px;
+        }
+
+        /* Removed reviews carousel styles (deleted as section removed) */
+
+        /* Modal (PMP details) */
+        .modal-overlay { background: rgba(0,0,0,0.6); }
+        .modal-scroll { max-height: 90vh; overflow:auto; -webkit-overflow-scrolling: touch; }
+    </style>
+</head>
+<body class="bg-[#e8f4ff]">
+    <!-- Skip to main content -->
+    <a href="#main" class="skip-link">تخطى إلى المحتوى الرئيسي / Skip to main content</a>
+
+    <!-- Fixed Navigation Header -->
+    <header class="bg-white shadow-lg fixed top-0 w-full z-50">
+        <nav class="container mx-auto px-6 py-4" role="navigation" aria-label="Primary navigation">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4 space-x-reverse cursor-pointer" onclick="showPage('home')">
+                    <img src="https://i.postimg.cc/XYn41mKn/Black-And-White-Modern-Initial-PB-Consulting-Logo-Design-5.png" alt="POTP Logo" class="w-16 h-16 object-contain" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-16 h-16 bg-blue-900 rounded-full items-center justify-center hidden">
+                        <i class="fas fa-trophy text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900 leading-tight">
+                            روّاد الأداء المتميز<br>
+                            <span class="text-blue-800 text-sm font-semibold">Pioneers of Top Performance</span>
+                        </h1>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <!-- الصف الأول -->
+                    <div class="flex justify-center space-x-8 space-x-reverse mb-2">
+                        <a href="#" class="nav-link text-gray-900 font-semibold active" onclick="showPage('home')">الرئيسية</a>
+                        <a href="#" class="nav-link text-gray-900 font-semibold" onclick="showPage('pmi')">نبذة عن معهد PMI</a>
+                        <a href="#" class="nav-link text-gray-900 font-semibold" onclick="showPage('about')">نبذة عن المدرب</a>
+                    </div>
+                    <!-- الصف الثاني -->
+                    <div class="flex justify-center space-x-8 space-x-reverse">
+                        <a href="#" class="nav-link text-gray-900 font-semibold" onclick="showPage('courses')">الدورات</a>
+                        <a href="#" class="nav-link text-gray-900 font-semibold" onclick="showPage('platform')">نبذة عن المنصة</a>
+                        <a href="#" class="nav-link text-gray-900 font-semibold" onclick="showPage('blog')">المدونة</a>
+                    </div>
+                </div>
+                
+                <!-- CTA Button & Mobile Menu -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <a href="https://potp-pm.moodiy.com/login/index.php" class="bg-red-500 text-white px-6 py-2 rounded-full font-bold hover:bg-red-400 transition-all" rel="noopener noreferrer">
+                        الدخول للمنصة
+                    </a>
+                    <button class="lg:hidden text-gray-900" onclick="toggleMobileMenu()" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-toggle" aria-label="فتح القائمة">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-blue-900 shadow-2xl lg:hidden" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-white">القائمة</h2>
+                    <button class="text-white" onclick="toggleMobileMenu()" aria-label="إغلاق القائمة" id="mobile-menu-close">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="space-y-6">
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('home'); toggleMobileMenu()">الرئيسية</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('about'); toggleMobileMenu()">نبذة عن المدرب</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('pmi'); toggleMobileMenu()">نبذة عن معهد PMI</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('pmi'); toggleMobileMenu()">شهادات PMI</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('courses'); toggleMobileMenu()">الدورات</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('platform'); toggleMobileMenu()">نبذة عن المنصة</a>
+                    <a href="#" class="block text-white font-semibold py-3 border-b border-blue-800" onclick="showPage('blog'); toggleMobileMenu()">المدونة</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="main" class="pt-20" tabindex="-1">
+        <!-- Homepage Section -->
+        <section id="home-page" class="page-section active">
+            <!-- Hero Section -->
+            <div class="hero-bg text-white py-20 relative overflow-hidden">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-center lg:text-right">
+                            <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-200">
+                                <h1 class="text-5xl lg:text-7xl font-bold mb-8 leading-tight text-blue-800">
+                                    منصة روّاد الأداء المتميز
+                                    <span class="block text-red-600">لإدارة المشاريع</span>
+                                </h1>
+                                <p class="text-2xl lg:text-3xl mb-6 leading-relaxed font-semibold text-gray-800">
+                                    <span class="text-blue-600">Pioneers of Top Performance for Project Management</span>
+                                </p>
+                                <p class="text-xl lg:text-2xl mb-10 leading-relaxed font-medium text-gray-700">
+                                    منصة التدريب الرائدة في الشهادات الدولية لإدارة المشاريع
+                                    <br>
+                                    <span class="text-lg text-gray-600">Leading Training Platform for International Project Management Certifications</span>
+                                </p>
+                                <div class="flex justify-center lg:justify-start">
+                                    <button class="bg-red-500 text-white px-12 py-5 rounded-full font-bold text-xl hover:bg-red-400 transition-all pulse-animation" onclick="showPage('courses')">
+                                        <i class="fas fa-rocket ml-2"></i>
+                                        ابدأ رحلتك الآن | Start Your Journey Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-blue-800 mb-6">لماذا تختارنا؟</h2>
+                        <div class="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 mb-12">
+                            <p class="text-lg leading-relaxed">
+                                منصة روّاد الأداء المتميز لإدارة المشاريع | POTP-PM تقدّم تجربة تعليمية متكاملة، مبتكرة واحترافية في إدارة المشاريع، معتمدة على معايير PMI، لتضمن لك التعلّم الذكي والفعّال بأعلى جودة.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">منصة متكاملة</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">نظام إدارة التعلم الخاص بنا يغطي جميع احتياجات التدريب، بدون الحاجة لمصادر خارجية، مع أدوات عملية وواجهة سهلة الاستخدام.</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-clipboard-check text-green-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">محاكاة الامتحان الدولي</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">اختبر نفسك باستخدام أسئلة محاكية تمامًا لأسئلة امتحانات PMI، لتعزز فرصك في النجاح بثقة واحتراف.</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-route text-purple-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">خطة دراسة متكاملة</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">نقدم منهجية منظمة وواضحة خطوة بخطوة، لضمان تحقيق أهدافك التدريبية والتأهيل لشهادة PMP أو أي شهادة PMI أخرى.</p>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover text-center">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-gem text-red-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">قيمة حقيقية للمتدربين</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">محتوى شامل يشمل فيديوهات مسجلة، ملفات تعليمية وخرائط ذهنية، وأداة ذكاء اصطناعي لمساعدتك في تطوير مشاريعك.</p>
+                        </div>
+                    </div>
+
+                    <!-- Additional Features -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-12">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center">ما تحصل عليه مع منصتنا</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-video text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">فيديوهات مسجلة</h4>
+                                    <p class="text-sm text-gray-600">لكل المنهج بجودة عالية</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-file-alt text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">ملفات تعليمية</h4>
+                                    <p class="text-sm text-gray-600">مواد مرجعية شاملة</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-project-diagram text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">خرائط ذهنية</h4>
+                                    <p class="text-sm text-gray-600">لتسهيل الفهم والحفظ</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-robot text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">أداة ذكاء اصطناعي</h4>
+                                    <p class="text-sm text-gray-600">لمساعدتك في تطوير مشاريعك</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clipboard-list text-teal-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">نماذج وقوالب</h4>
+                                    <p class="text-sm text-gray-600">لتطبيق ما تعلمته على مشاريعك الواقعية</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4 space-x-reverse">
+                                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-user-tie text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1">مدرب خبير</h4>
+                                    <p class="text-sm text-gray-600">معتمد بـ 6 شهادات PMI دولية</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- دوراتنا المميزة - سلايدر تلقائي -->
+<!-- <div class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-12">دوراتنا المميزة</h2>
+        <div id="courses-carousel" class="relative overflow-hidden">
+            <div id="courses-slides" class="flex transition-all duration-700">
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover course-card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4 p-2 course-icon">
+                            <img src="https://i.postimg.cc/h4sFk10Z/IMG-1588.png" alt="PMP Logo" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">PMP® Professional</h3>
+                        <p class="text-gray-600 mb-4">شهادة إدارة المشاريع الاحترافية - الأكثر طلباً عالمياً</p>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-all" onclick="showPage('courses')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover course-card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-4 p-2 course-icon">
+                            <img src="https://i.postimg.cc/9Mt09g7H/IMG-1590.png" alt="CAPM Logo" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">CAPM® Associate</h3>
+                        <p class="text-gray-600 mb-4">مساعد معتمد في إدارة المشاريع - للمبتدئين</p>
+                        <button class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-all" onclick="showPage('courses')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover course-card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mb-4 p-2 course-icon">
+                            <img src="https://i.postimg.cc/mkLDy3Yz/IMG-1591.png" alt="PMI-RMP Logo" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">PMI-RMP® Risk</h3>
+                        <p class="text-gray-600 mb-4">إدارة المخاطر الاحترافية - للمشاريع المعقدة</p>
+                        <button class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-all" onclick="showPage('courses')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <!-- <button id="courses-prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-2 shadow-lg z-10"><i class="fas fa-chevron-right"></i></button>
+            <button id="courses-next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-2 shadow-lg z-10"><i class="fas fa-chevron-left"></i></button>
+        </div>
+    </div>
+</div> -->
+<!-- نهاية دوراتنا المميزة -->
+
+            <!-- CTA Section -->
+            <div class="gradient-bg text-white py-16">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl font-bold mb-6">ابدأ رحلتك نحو الاحتراف اليوم</h2>
+                    <p class="text-xl mb-8 opacity-90">انضم إلى آلاف المحترفين الذين طوروا مهاراتهم معنا</p>
+                    <button class="bg-white text-blue-800 px-12 py-4 rounded-full font-bold text-xl hover:bg-gray-100 transition-all pulse-animation" onclick="showPage('courses')">
+                        <i class="fas fa-graduation-cap ml-2"></i>
+                        سجل الآن
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section: added so showPage('courses') has content -->
+        <section id="courses-page" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-blue-800">الدورات التدريبية</h2>
+                        <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">اختر من بين دوراتنا المعتمدة لتحضير شهادات PMI، أو اطّلع على الخطط التفصيلية لكل دورة.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- PMP Card -->
+                        <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover text-center">
+                            <div class="w-20 h-20 mx-auto mb-4">
+                                <img src="https://i.postimg.cc/h4sFk10Z/IMG-1588.png" alt="PMP Logo" class="w-full h-full object-contain mx-auto" loading="lazy">
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">PMP® -إدارة المشاريع الإحترافية</h3>
+                            <p class="text-gray-600 mb-4">منهج شامل للتحضير لامتحان PMP مع محاكاة امتحان وأسئلة تدريبية.</p>
+                            <div class="flex justify-center gap-4">
+                                <button class="bg-blue-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-900" onclick="showPmpModal()">تفاصيل</button>
+                                <a href="http://wa.me/218925051199" class="bg-red-500 text-white px-5 py-2 rounded-full font-bold hover:bg-red-400" rel="noopener noreferrer" target="_blank" aria-label="سجل الآن عبر واتساب">سجل الآن</a>
+                            </div>
+                        </div>
+
+                        <!-- CAPM Card (buttons removed -> "قريباً") -->
+                        <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover text-center">
+                            <div class="w-20 h-20 mx-auto mb-4">
+                                <img src="https://i.postimg.cc/9Mt09g7H/IMG-1590.png" alt="CAPM Logo" class="w-full h-full object-contain mx-auto" loading="lazy">
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">CAPM® - مساعد معتمد في إدارة المشاريع</h3>
+                            <p class="text-gray-600 mb-6">دورة تمهيديّة للمبتدئين تغطي أساسيات إدارة المشاريع والتحضير لشهادة CAPM.</p>
+                            <div class="flex justify-center">
+                                <span class="inline-block bg-gray-200 text-gray-700 px-5 py-2 rounded-full font-semibold cursor-not-allowed" aria-disabled="true">قريباً</span>
+                            </div>
+                        </div>
+
+                        <!-- PMI-RMP Card (buttons removed -> "قريباً") -->
+                        <div class="bg-gray-50 rounded-2xl p-6 shadow-lg card-hover text-center">
+                            <div class="w-20 h-20 mx-auto mb-4">
+                                <img src="https://i.postimg.cc/mkLDy3Yz/IMG-1591.png" alt="PMI-RMP Logo" class="w-full h-full object-contain mx-auto" loading="lazy">
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">PMI-RMP® - إدارة المخاطر الاحترافية</h3>
+                            <p class="text-gray-600 mb-6">تعمّق في إدارة مخاطر المشاريع وتحضير لشهادة PMI-RMP.</p>
+                            <div class="flex justify-center">
+                                <span class="inline-block bg-gray-200 text-gray-700 px-5 py-2 rounded-full font-semibold cursor-not-allowed" aria-disabled="true">قريباً</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section: shows "قريباً" when user opens the blog -->
+        <section id="blog-page" class="page-section">
+            <div class="py-40 bg-white">
+                <div class="container mx-auto px-6 text-center">
+                    <div class="inline-block bg-blue-50 border-l-4 border-blue-600 rounded-r-lg p-6 text-right max-w-2xl mx-auto">
+                        <h2 class="text-4xl font-bold text-blue-800 mb-4">المدونة</h2>
+                        <p class="text-xl text-gray-700 mb-2">قريباً</p>
+                        <p class="text-sm text-gray-500">نقوم بتحضير محتوى مفيد ومقالات حول إدارة المشاريع وتحديثات الدورات. تابعنا للاطلاع عند الإطلاق.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Trainer Section -->
+        <section id="about-page" class="page-section">
+            <div class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-blue-800 mb-6">نبذة عن المدرب</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">تعرف على الخبير الذي سيقودك نحو النجاح في عالم إدارة المشاريع</p>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row items-center justify-center gap-12 mb-20">
+                        <!-- صورة المدرب -->
+                        <div class="flex-shrink-0">
+                            <div class="relative w-64 h-64 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-red-500 rounded-full p-2">
+                                    <div class="w-full h-full bg-white rounded-full p-3">
+                                        <img src="https://i.postimg.cc/1XHtVZjn/1.png" alt="أحمد الديب - Ahmed Aldeib" class="w-full h-full object-cover rounded-full shadow-xl" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-full bg-gradient-to-br from-blue-500 to-green-700 rounded-full items-center justify-center shadow-xl hidden">
+                                            <i class="fas fa-user-tie text-white text-6xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- بطاقة بيانات المدرب -->
+                        <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-2xl">
+                            <h2 class="text-3xl font-bold text-blue-800 mb-2 text-right">أحمد الديب | Ahmed Aldeib</h2>
+                            <p class="text-xl text-red-600 font-semibold mb-4 text-right">مهندس مدني ومدرب معتمد في إدارة المشاريع | Civil Engineer & Certified Project Management Trainer</p>
+                            <ul class="space-y-2 mb-6 text-lg text-right">
+                                <li>بكالوريوس في الهندسة المدنية - جامعة طرابلس | Bachelor of Civil Engineering - University of Tripoli</li>
+                                <li>PMP®, CAPM®, PMI-RMP®, PMI-ACP®, PMI-PMOCP™, PMI-CP™ & MICRO CREDENTIA (Construction Project Communications)</li>
+                                <li>خبرة واسعة في إدارة المشاريع الهندسية والبنية التحتية | Extensive experience in engineering and infrastructure project management</li>
+                                <li>عضو في معهد إدارة المشاريع PMI | PMI Member</li>
+                            </ul>
+                            <div class="mb-4 text-right">
+                                <p class="text-gray-700 text-base leading-relaxed mb-2">
+                                    مهندس مدني ومدرب معتمد مع خبرة واسعة في إدارة المشاريع الهندسية والبنية التحتية. يعمل كمراقب ومدقق للمشاريع المبنية، ويشرف على لجان العطاءات وفحص العقود، ويراجع المستخلصات وشهادات الدفع للعقود الحكومية.
+                                </p>
+                                <p class="text-gray-600 text-base leading-relaxed italic">
+                                    Civil engineer and certified trainer with extensive experience in engineering and infrastructure project management. Works as a supervisor and auditor for construction projects, oversees tender committees and contract reviews, and reviews extracts and payment certificates for government contracts.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الخبرات العملية -->
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">الخبرات العملية</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-search text-blue-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">مراقب ومدقق للمشاريع المبنية</h3>
+                                <p class="text-gray-600 mb-3">مشاريع البنية التحتية والإنشاءات</p>
+                                <p class="text-sm text-gray-500">مراقبة جودة التنفيذ والتدقيق على المعايير الهندسية</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-gavel text-green-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">مراقب على لجان العطاءات</h3>
+                                <p class="text-gray-600 mb-3">العقود الحكومية والخاصة</p>
+                                <p class="text-sm text-gray-500">فحص العقود وتقييم العطاءات وضمان الشفافية</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-file-invoice-dollar text-purple-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">مراجع المستخلصات وشهادات الدفع</h3>
+                                <p class="text-gray-600 mb-3">العقود الحكومية</p>
+                                <p class="text-sm text-gray-500">مراجعة وتدقيق المستخلصات المالية وشهادات الدفع</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الإنجازات -->
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">الإنجازات | Achievements</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl p-8">
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-trophy text-yellow-400 text-2xl ml-4 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-lg mb-2">مؤسس منصة روّاد الأداء المتميز</h4>
+                                            <p class="text-sm opacity-90">Founder of Pioneers of Top Performance Platform</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-medal text-yellow-400 text-2xl ml-4 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-lg mb-2">أول ليبي يحصل على 6 شهادات دولية من معهد إدارة المشاريع (PMI)</h4>
+                                            <p class="text-sm opacity-90">First Libyan to obtain 6 international certifications from PMI</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-star text-yellow-400 text-2xl ml-4 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-lg mb-2">أول ليبي يحصل على شهادة محترف إدارة مشاريع البناء (PMI-CP)</h4>
+                                            <p class="text-sm opacity-90">First Libyan to obtain PMI-CP certification, among the first 900 professionals worldwide</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-2xl p-8">
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-globe text-yellow-400 text-2xl ml-4 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-lg mb-2">عضو التحالف العالمي</h4>
+                                            <p class="text-sm opacity-90">Project Management Office Global Alliance (PMOGA) Member</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-users text-yellow-400 text-2xl ml-4 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-lg mb-2">عضو معهد إدارة المشاريع</h4>
+                                            <p class="text-sm opacity-90">Project Management Institute (PMI) Member</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الدورات التدريبية المحصل عليها -->
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">الدورات التدريبية المحصل عليها | Completed Training Courses</h2>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">دورة التعلم الإلكتروني PMO-CP</h4>
+                                            <p class="text-sm text-gray-600">PMO-CP E-Learning Course</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">إدارة العقود والمخاطر في البناء</h4>
+                                            <p class="text-sm text-gray-600">Construction Contract & Risk Management</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">إدارة واجهات المشاريع الإنشائية</h4>
+                                            <p class="text-sm text-gray-600">Construction Project Interface Management</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">إدارة نطاق البناء وأوامر التغيير</h4>
+                                            <p class="text-sm text-gray-600">Construction Scope & Change Order Management</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">المشهد البياني للذكاء الاصطناعي التوليدي لمديري المشاريع</h4>
+                                            <p class="text-sm text-gray-600">Generative AI Landscape for Project Managers</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">إدارة سلسلة القيمة</h4>
+                                            <p class="text-sm text-gray-600">Value Stream Management</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">مقدمة مجانية: أساسيات Disciplined Agile™</h4>
+                                            <p class="text-sm text-gray-600">Free Introduction: Disciplined Agile™ Fundamentals</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">مقاييس الأجايل لتحقيق النجاح</h4>
+                                            <p class="text-sm text-gray-600">Agile Metrics for Success</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">مهارات PMI Citizen Developer™ في تصميم الأعمال</h4>
+                                            <p class="text-sm text-gray-600">PMI Citizen Developer™ Business Design Skills</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">التعامل مع الانحياز: استخدام حل المشكلات المعقدة</h4>
+                                            <p class="text-sm text-gray-600">Addressing Bias: Complex Problem Solving</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">أساسيات Scrum</h4>
+                                            <p class="text-sm text-gray-600">Scrum Fundamentals</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">استمرارية الأعمال</h4>
+                                            <p class="text-sm text-gray-600">Business Continuity</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">مقدمة مجانية لإدارة المشاريع المعرفية باستخدام الذكاء الاصطناعي</h4>
+                                            <p class="text-sm text-gray-600">Free Introduction to CPMAI™</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-600 text-lg ml-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">التطبيق العملي للذكاء الاصطناعي التوليدي لمديري المشاريع</h4>
+                                            <p class="text-sm text-gray-600">Practical Application of Generative AI for Project Managers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl p-12 text-center">
+                        <h3 class="text-3xl font-bold mb-8">فلسفة التدريب</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div>
+                                <i class="fas fa-hands-helping text-yellow-400 text-4xl mb-4"></i>
+                                <h4 class="text-xl font-bold mb-4">التعلم التطبيقي</h4>
+                                <p class="opacity-90">نركز على الممارسة العملية والتطبيق الفوري للمفاهيم النظرية</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-comments text-green-400 text-4xl mb-4"></i>
+                                <h4 class="text-xl font-bold mb-4">التعلم التفاعلي</h4>
+                                <p class="opacity-90">بيئة تعليمية تفاعلية تشجع على المشاركة والنقاش البناء</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-medal text-red-400 text-4xl mb-4"></i>
+                                <h4 class="text-xl font-bold mb-4">النتائج المضمونة</h4>
+                                <p class="opacity-90">التزام بتحقيق أهداف المتدربين ونجاحهم في الامتحانات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PMI Institute Section -->
+        <section id="pmi-page" class="page-section">
+            <div class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <div class="w-48 h-48 mx-auto mb-8">
+                            <img src="https://i.postimg.cc/rw6468Lc/pmi-logo-og-Share.png" alt="PMI Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="w-full h-full bg-blue-600 rounded-full items-center justify-center hidden">
+                                <i class="fas fa-certificate text-white text-6xl"></i>
+                            </div>
+                        </div>
+                        <h1 class="text-5xl font-bold text-blue-800 mb-6">معهد إدارة المشاريع – PMI</h1>
+                        <p class="text-xl text-yellow-600 font-semibold mb-8">Lighting the way for the project profession since 1969</p>
+                        <p class="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                            منذ عام 1969، يشكل معهد إدارة المشاريع (PMI) السلطة الرائدة عالميًا في مجال إدارة المشاريع، ملتزمًا بتوجيه الطريق نحو نجاح المشاريع وتسليط الضوء على قوة إدارة المشاريع والأشخاص الذين يقفون خلفها.
+                        </p>
+                    </div>
+                    <!-- نبذة وتاريخ PMI -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-12 max-w-4xl mx-auto">
+                        <h2 class="text-2xl font-bold text-blue-800 mb-4 text-center">تاريخ PMI</h2>
+                        <p class="text-gray-700 mb-4 text-center">
+                            منذ تأسيسه، ركز PMI على جمع المهنيين معًا وتعريف وتطوير مهنة إدارة المشاريع بشكل مستمر.<br>
+                            بدأت الفكرة بعد سلسلة من النقاشات بين جيم سنيدر وزملائه، وأسفرت عن اجتماع رسمي في معهد جورجيا للتكنولوجيا، أتلانتا، الولايات المتحدة الأمريكية في 3 أكتوبر 1969، حيث وُلد معهد PMI.<br>
+                            وتم توقيع أوراق التأسيس في بنسلفانيا من قبل خمسة مؤسسين رسميين.
+                        </p>
+                        <h3 class="text-xl font-bold text-blue-700 mb-6 text-center">المؤسسون الخمسة</h3>
+                        <!-- صف أول: 3 مؤسسين -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-blue-50 rounded-xl p-6 shadow flex flex-col items-center">
+                                <img src="https://i.postimg.cc/JhGmmvKj/james-snyder-bio.webp" alt="James R. Snyder" class="w-24 h-24 rounded-full mb-2 object-cover border-2 border-blue-700" loading="lazy">
+                                <i class="fas fa-user-tie text-blue-700 text-3xl mb-2"></i>
+                                <div class="font-bold text-lg text-blue-800 mb-1">James R. Snyder</div>
+                                <div class="text-gray-700 text-sm text-center mb-2">المؤسس والمدير التنفيذي الأول<br>يُلقب بـ "أب PMI"</div>
+                            </div>
+                            <div class="bg-purple-50 rounded-xl p-6 shadow flex flex-col items-center">
+                                <img src="https://i.postimg.cc/Z5qzF2GX/images.jpg" alt="Eric Jenett" class="w-24 h-24 rounded-full mb-2 object-cover border-2 border-purple-700" loading="lazy">
+                                <i class="fas fa-certificate text-purple-700 text-3xl mb-2"></i>
+                                <div class="font-bold text-lg text-purple-800 mb-1">Eric Jenett, PMP</div>
+                                <div class="text-gray-700 text-sm text-center mb-2">أول حاصل على شهادة PMP®<br>مؤسس مشارك</div>
+                            </div>
+                            <div class="bg-green-50 rounded-xl p-6 shadow flex flex-col items-center">
+                                <img src="https://i.postimg.cc/vBZnQQk3/j-gordon-davis-360x360.webp" alt="J. Gordon Davis" class="w-24 h-24 rounded-full mb-2 object-cover border-2 border-green-700" loading="lazy">
+                                <i class="fas fa-university text-green-700 text-3xl mb-2"></i>
+                                <div class="font-bold text-lg text-green-800 mb-1">J. Gordon Davis, PhD</div>
+                                <div class="text-gray-700 text-sm text-center mb-2">بناء الأسس الأكاديمية لمهنة إدارة المشاريع</div>
+                            </div>
+                        </div>
+                        <!-- صف ثاني: 2 مؤسسين -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-yellow-50 rounded-xl p-6 shadow flex flex-col items-center">
+                                <img src="https://i.postimg.cc/rscw8gDc/susan-gallagher-360-x-360.webp" alt="Susan C. Gallagher" class="w-24 h-24 rounded-full mb-2 object-cover border-2 border-yellow-700" loading="lazy">
+                                <i class="fas fa-coins text-yellow-700 text-3xl mb-2"></i>
+                                <div class="font-bold text-lg text-yellow-800 mb-1">Susan C. Gallagher</div>
+                                <div class="text-gray-700 text-sm text-center mb-2">إدارة أولى الأنشطة المالية والفنية</div>
+                            </div>
+                            <div class="bg-red-50 rounded-xl p-6 shadow flex flex-col items-center">
+                                <img src="https://i.postimg.cc/25hYVhR5/GEngman-Edward-20211109.webp" alt="E.A. Ned Engman" class="w-24 h-24 rounded-full mb-2 object-cover border-2 border-red-700" loading="lazy">
+                                <i class="fas fa-industry text-red-700 text-3xl mb-2"></i>
+                                <div class="font-bold text-lg text-red-800 mb-1">E.A. "Ned" Engman</div>
+                                <div class="text-gray-700 text-sm text-center mb-2">تطبيق مبادئ إدارة المشاريع في قطاع الصناعة</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-700 mb-6 text-center">مراحل تطور PMI عبر العقود</h3>
+                        <div class="mb-4 text-gray-700">
+                            <div><span class="font-bold">1969-1979:</span> البداية والانطلاق – تنظيم أولى الندوات والمؤتمرات وافتتاح أول فروعه.</div>
+                            <div><span class="font-bold">1979-1989:</span> فترة التغيير – توسيع الفروع، تقديم شهادة PMP®، تأسيس جوائز التميز.</div>
+                            <div><span class="font-bold">1989-1999:</span> خطوات كبيرة نحو العالمية – إصدار أول نسخة من PMBOK® Guide، أول منتدى عالمي.</div>
+                            <div><span class="font-bold">1999-2009:</span> التوسع العالمي – ترجمة دليل PMBOK®، إطلاق مركز الاعتماد العالمي.</div>
+                            <div><span class="font-bold">2009-2019:</span> الوصول إلى آفاق جديدة – فتح مكاتب دولية، إطلاق شهادات جديدة.</div>
+                            <div><span class="font-bold">2019-2024:</span> المستقبل نحو الأمام – حملات توعية، دمج الذكاء الاصطناعي في المهنة.</div>
+                            <div><span class="font-bold">2024 – الحاضر:</span> إشعال الطريق نحو المستقبل – استراتيجية PMI:Next، تعزيز أثر المشاريع عالميًا.</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                            <div>
+                                <h4 class="font-bold text-blue-800 mb-2">رسالتنا</h4>
+                                <p class="text-gray-700">نحن مجتمع يبتكر المنتجات والخدمات والخبرات التي تعزز نجاح المشاريع.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-800 mb-2">رؤيتنا</h4>
+                                <p class="text-gray-700">عالم تحقق فيه كل المشاريع أقصى إمكاناتها لتحقيق أثر إيجابي.</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-blue-800 mb-2">قيمنا وأهدافنا</h4>
+                        <ul class="mb-2 text-gray-700 list-disc list-inside">
+                            <li>تعظيم نجاح المشاريع – نحدد تعريفًا موحدًا لنجاح المشاريع يمكن للجميع الاتفاق عليه.</li>
+                            <li>إحداث أثر اجتماعي – نشجع المهنيين على استخدام مهاراتهم لتحقيق فرق إيجابي في المجتمع.</li>
+                        </ul>
+                    </div>
+
+                  
+
+                    <!-- شهادات PMI -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-12 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">شهادات PMI</h2>
+    <p class="text-lg text-gray-700 mb-8 text-center">
+        تعرف على مجموعة شهادات معهد إدارة المشاريع (PMI) المعتمدة عالمياً.<br>
+        للمزيد من التفاصيل زر الموقع الرسمي <a href="https://www.pmi.org/certifications" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">pmi.org</a>
+    </p>
+    <!-- الشهادات الأساسية -->
+    <h3 class="text-2xl font-bold text-blue-700 mb-6 text-right">Core Certifications – الشهادات الأساسية</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <!-- CAPM -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/9Mt09g7H/IMG-1590.png" alt="CAPM Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">CAPM®</h4>
+            <div class="text-sm font-semibold mb-1">Certified Associate in Project Management</div>
+            <div class="text-xs text-gray-600 mb-3">مساعد معتمد في لإدارة المشاريع</div>
+            <a href="https://www.pmi.org/certifications/certified-associate-capm" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل CAPM">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/h4sFk10Z/IMG-1588.png" alt="PMP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMP®</h4>
+            <div class="text-sm font-semibold mb-1">Project Management Professional</div>
+            <div class="text-xs text-gray-600 mb-3">إدارة المشاريع الاحترافية</div>
+            <a href="https://www.pmi.org/certifications/project-management-pmp" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل PMP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PgMP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/FHg49xwz/twitter-thumb-201604-blob.png" alt="PgMP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PgMP®</h4>
+            <div class="text-sm font-semibold mb-1">Program Management Professional</div>
+            <div class="text-xs text-gray-600 mb-3">إدارة البرامج الإحترافية</div>
+            <a href="https://www.pmi.org/certifications/program-management-pgmp" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل PgMP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PfMP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/tgqH7xH5/blob.png" alt="PfMP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PfMP®</h4>
+            <div class="text-sm font-semibold mb-1">Portfolio Management Professional</div>
+            <div class="text-xs text-gray-600 mb-3">إدارة المحاقظ الإحترافية</div>
+            <a href="https://www.pmi.org/certifications/portfolio-management-pfmp" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل PfMP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <!-- الشهادات المتخصصة -->
+    <h3 class="text-2xl font-bold text-blue-700 mb-6 text-right">Specialized Certifications – الشهادات المتخصصة</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <!-- PMI-CP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/W3Pthct7/IMG-1594.png" alt="PMI-CP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-CP™</h4>
+            <div class="text-sm font-semibold mb-1">PMI Construction Professional</div>
+            <div class="text-xs text-gray-600 mb-3">محترف البناء</div>
+            <a href="https://www.pmi.org/certifications/construction" target="_blank" rel="noopener noreferrer" class="bg-teal-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-teal-900 transition-all" aria-label="تفاصيل PMI-CP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMI-ACP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/1XvzCgBW/IMG-1593.png" alt="PMI-ACP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-ACP®</h4>
+            <div class="text-sm font-semibold mb-1">PMI Agile Certified Practitioner</div>
+            <div class="text-xs text-gray-600 mb-3">ممارس معتمد  في المنهجية الرشيقة</div>
+            <a href="https://www.pmi.org/certifications/agile-acp" target="_blank" rel="noopener noreferrer" class="bg-green-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-green-900 transition-all" aria-label="تفاصيل PMI-ACP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMI-RMP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/mkLDy3Yz/IMG-1591.png" alt="PMI-RMP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-RMP®</h4>
+            <div class="text-sm font-semibold mb-1">PMI Risk Management Professional</div>
+            <div class="text-xs text-gray-600 mb-3">إدارة المخاطر الإحترافية</div>
+            <a href="https://www.pmi.org/certifications/risk-management-rmp" target="_blank" rel="noopener noreferrer" class="bg-red-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-red-900 transition-all" aria-label="تفاصيل PMI-RMP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMI-PBA -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/ydW4yCx3/blob-1.png" alt="PMI-PBA Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-PBA®</h4>
+            <div class="text-sm font-semibold mb-1">PMI Professional in Business Analysis</div>
+            <div class="text-xs text-gray-600 mb-3">محترف معتمد في تحليل الأعمال</div>
+            <a href="https://www.pmi.org/certifications/business-analysis-pba" target="_blank" rel="noopener noreferrer" class="bg-indigo-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-indigo-900 transition-all" aria-label="تفاصيل PMI-PBA">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMI-SP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/BvmfFnSG/blob-2.png" alt="PMI-SP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-SP®</h4>
+            <div class="text-sm font-semibold mb-1">PMI Scheduling Professional</div>
+            <div class="text-xs text-gray-600 mb-3">محترف في الجدولة</div>
+            <a href="https://www.pmi.org/certifications/scheduling-sp" target="_blank" rel="noopener noreferrer" class="bg-pink-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-pink-900 transition-all" aria-label="تفاصيل PMI-SP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- PMI-PMOCP -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/vmncYZ8B/IMG-1592.png" alt="PMI-PMOCP Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">PMI-PMOCP™</h4>
+            <div class="text-sm font-semibold mb-1">PMO Certified Professional</div>
+            <div class="text-xs text-gray-600 mb-3">محترف معتمد في إدارة مكاتب المشاريع</div>
+            <a href="https://www.pmi.org/certifications/pmo-certified-professional-pmi-pmocp" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل PMI-PMOCP">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- CPMAI -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/PqVrj48Z/blob-3.png" alt="CPMAI Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">CPMAI™</h4>
+            <div class="text-sm font-semibold mb-1">PMI Certified Professional in Managing AI (PMI-CPMAI)™</div>
+            <div class="text-xs text-gray-600 mb-3">محترف معتمد في إدارة الذكاء الاصطناعي</div>
+            <a href="https://www.pmi.org/certifications/ai-project-management-cpmai?_gl=1*kbdir8*_gcl_au*NTc0MjM0Njc1LjE3NjEzOTUzMTAuMTM3ODg3NTUyOC4xNzYxOTg5NjA0LjE3NjE5ODk2MDM" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-blue-900 transition-all" aria-label="تفاصيل CPMAI">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <!-- GPM-b -->
+        <div class="bg-gray-50 rounded-xl shadow p-6 flex flex-col items-center text-center">
+            <img src="https://i.postimg.cc/mgG4fnXK/gpm-b-badge.png" alt="GPM-b Logo" class="w-16 h-16 mb-3 object-contain" loading="lazy">
+            <h4 class="font-bold text-blue-800 mb-1">GPM-b™</h4>
+            <div class="text-sm font-semibold mb-1">Green Project Manager – Basic</div>
+            <div class="text-xs text-gray-600 mb-3">مدير المشروع الأخضر – المستوى الأساسي</div>
+            <a href="https://www.pmi.org/certifications/green-project-manager-basic-gpm-b" target="_blank" rel="noopener noreferrer" class="bg-green-700 text-white px-4 py-1 rounded-full text-sm font-bold hover:bg-green-900 transition-all" aria-label="تفاصيل GPM-b">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Overview (inserted before About Trainer) -->
+        <section id="platform-page" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-blue-800 mb-6">نبذة عن المنصة</h2>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg text-right">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">الرؤية (Vision)</h3>
+                        <p class="text-gray-700 mb-6">
+                            أن تكون "روّاد الأداء المتميز" المنصة الليبية الرائدة في إعداد محترفي إدارة المشاريع،
+                            القادرين على قيادة مشاريع التنمية والإعمار بكفاءة عالمية ومعايير معهد إدارة المشاريع (PMI).
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">الرسالة (Mission)</h3>
+                        <p class="text-gray-700 mb-6">
+                            نهدف في "روّاد الأداء المتميز" إلى تمكين الشباب الليبي من اكتساب مهارات إدارة المشاريع وفق المعايير الدولية،
+                            عبر برامج تدريبية معتمدة وتفاعلية، تسهم في تطوير الكفاءات الوطنية، وتعزز جاهزية ليبيا لمشاريع الإعمار والتنمية.
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">الأهداف (Objectives)</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>تأهيل الكفاءات الوطنية</li>
+                            <li>دعم مبادرات الإعمار والتنمية</li>
+                            <li>تعزيز الشراكات المؤسسية</li>
+                            <li>تحسين الثقافة المهنية</li>
+                            <li>التحول الرقمي في التدريب</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PMP Details Modal -->
+    <div id="pmp-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pmp-modal-title">
+        <div class="bg-white rounded-2xl shadow-xl max-w-3xl w-full mx-4 modal-scroll p-6 text-right">
+            <div class="flex justify-between items-start mb-4">
+                <h3 id="pmp-modal-title" class="text-2xl font-bold text-blue-800">إدارة المشاريع الاحترافية – PMP®</h3>
+                <button aria-label="إغلاق" onclick="closePmpModal()" class="text-gray-600 hover:text-gray-900"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p><strong>PMP®</strong> هي شهادة عالمية معترف بها من معهد إدارة المشاريع – PMI®، وتعتبر من أهم الشهادات المهنية في مجال إدارة المشاريع، حيث تمكّن المحترفين من:</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>تعزيز مهارات التخطيط والتنفيذ ومراقبة المشاريع.</li>
+                    <li>تطوير القدرة على إدارة الفرق والموارد بفعالية.</li>
+                    <li>زيادة الفرص الوظيفية والتقدّم المهني في إدارة المشاريع.</li>
+                </ul>
+                <p>🏷️ باقات الدورة</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>باقة الحضور شخصيًا</li>
+                    <li>باقة الحضور عن بُعد (Online Live)</li>
+                    <li>باقة الوصول الكامل للمنصة (Self-Paced)</li>
+                </ul>
+                <p><strong>تشمل جميع الباقات:</strong></p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>35 ساعة محاضرات مسجلة ومباشرة.</li>
+                    <li>180 يوم وصول للحساب على المنصة لمشاهدة المحتوى أونلاين.</li>
+                    <li>24 اختبارًا تدريبيًا عمليًا.</li>
+                    <li>أكثر من 3000 سؤال محاكي للامتحان الدولي.</li>
+                    <li>متصفح آمن يحاكي برنامج الامتحان الفعلي (OnVUE).</li>
+                    <li>140 محاضرة تعليمية شاملة.</li>
+                    <li>ملخصات وخرائط ذهنية لتسهيل المراجعة.</li>
+                    <li>شهادة 35 ساعة تدريبية معتمدة لتلبية شروط التقديم للامتحان.</li>
+                    <li>دعم واستفسارات عبر مجموعة واتساب خاصة بالمشتركين 💬.</li>
+                    <li>هدية خاصة لجميع المشتركين.</li>
+                </ul>
+                <p class="font-semibold text-lg text-blue-800">ابدأ رحلتك نحو الاحتراف! انضم الآن إلى دورة PMP® في ليبيا عبر منصة رواد الأداء المتميز – POTP-PM وارتقِ بمهاراتك في إدارة المشاريع.</p>
+                <div class="mt-4 flex gap-3">
+                    <a href="http://wa.me/218925051199" target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white px-5 py-2 rounded-full font-bold hover:bg-green-700">سجل الآن عبر واتساب</a>
+                    <button onclick="closePmpModal()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-full">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Footer (replaced with improved footer) -->
+<footer class="bg-white border-t mt-12">
+	<div class="container mx-auto px-6 py-10">
+		<div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+			<!-- logo + description -->
+			<div class="space-y-4 text-right">
+				<div class="flex items-center justify-end gap-4">
+					<img src="https://i.postimg.cc/XYn41mKn/Black-And-White-Modern-Initial-PB-Consulting-Logo-Design-5.png" alt="POTP Logo" class="w-12 h-12 object-contain">
+					<div>
+						<div class="font-bold text-lg text-gray-900">روّاد الأداء المتميز</div>
+						<div class="text-sm text-gray-600">منصة تدريبية معتمدة في إدارة المشاريع — تطوير مهاراتك والوصول للشهادات الدولية.</div>
+					</div>
+				</div>
+				<div class="flex justify-end gap-3">
+					<a href="http://wa.me/218925051199" target="_blank" rel="noopener noreferrer" aria-label="واتساب" class="inline-flex items-center gap-2 bg-green-600 text-white px-3 py-2 rounded-full text-sm">
+						<i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+					</a>
+					<a href="mailto:potp.pm.info@gmail.com" class="inline-flex items-center gap-2 bg-gray-100 text-gray-800 px-3 py-2 rounded-full text-sm" aria-label="البريد الإلكتروني">
+						<i class="fas fa-envelope"></i> potp.pm.info@gmail.com
+					</a>
+				</div>
+			</div>
+ 
+ 			<!-- quick links -->
+			<div class="text-right">
+				<h4 class="font-bold text-blue-800 mb-3">روابط سريعة</h4>
+				<ul class="space-y-2 text-gray-700">
+					<li><a href="#" onclick="showPage('home')" class="hover:underline">الرئيسية</a></li>
+					<li><a href="#" onclick="showPage('courses')" class="hover:underline">الدورات</a></li>
+					<li><a href="#" onclick="showPage('platform')" class="hover:underline">نبذة عن المنصة</a></li>
+					<li><a href="#" onclick="showPage('pmi')" class="hover:underline">نبذة عن معهد PMI</a></li>
+					<li><a href="#" onclick="showPage('about')" class="hover:underline">نبذة عن المدرب</a></li>
+				</ul>
+			</div>
+ 			
+ 			<!-- Social networks (prominent column) -->
+ 			<div class="text-right">
+ 				<h4 class="font-bold text-blue-800 mb-3">🌐 تابعنا على</h4>
+ 				<div class="grid grid-cols-1 gap-3">
+ 					<a href="https://www.linkedin.com/in/ahmed-aldeib-9bb71b326" target="_blank" rel="noopener noreferrer" class="flex items-center justify-end gap-3 p-3 border rounded-lg hover:bg-blue-50">
+						<span class="text-lg font-semibold">لينكدإن</span>
+						<i class="fab fa-linkedin fa-2x text-blue-700"></i>
+					</a>
+					<a href="https://www.tiktok.com/@ahmed.aldeib182" target="_blank" rel="noopener noreferrer" class="flex items-center justify-end gap-3 p-3 border rounded-lg hover:bg-gray-100">
+						<span class="text-lg font-semibold">تيك توك</span>
+						<i class="fab fa-tiktok fa-2x"></i>
+					</a>
+					<a href="https://www.youtube.com/@AHMEDALDEIB-POTP-PM" target="_blank" rel="noopener noreferrer" class="flex items-center justify-end gap-3 p-3 border rounded-lg hover:bg-red-50">
+						<span class="text-lg font-semibold">يوتيوب</span>
+						<i class="fab fa-youtube fa-2x text-red-600"></i>
+					</a>
+					<a href="https://www.facebook.com/share/1EsHZUQJ9L" target="_blank" rel="noopener noreferrer" class="flex items-center justify-end gap-3 p-3 border rounded-lg hover:bg-blue-50">
+						<span class="text-lg font-semibold">فيسبوك</span>
+						<i class="fab fa-facebook fa-2x text-blue-600"></i>
+					</a>
+				</div>
+ 			</div>
+ 		</div>
+ 
+ 		<div class="mt-8 border-t pt-6 text-center text-xs text-gray-600">
+			<p>© 2025 روّاد الأداء المتميز | جميع الحقوق محفوظة</p>
+			<p class="mt-2">تصميم وتطوير: م.أحمد الديب — روّاد الأداء المتميز</p>
+ 		</div>
+ 	</div>
+ </footer>
+
+    <!-- أضف هذا السكربت قبل </body> -->
+	<script>
+		// showPage: يَظهر القسم المطلوب ويحدّث حالة روابط التنقل
+		function showPage(page) {
+			document.querySelectorAll('.page-section').forEach(function(section) {
+				section.classList.remove('active');
+			});
+			var target = document.getElementById(page + '-page');
+			if (target) target.classList.add('active');
+
+			// تحديث حالة الروابط (class active)
+			document.querySelectorAll('.nav-link').forEach(function(link) {
+				link.classList.remove('active');
+				var onclick = link.getAttribute('onclick') || '';
+				if (onclick.indexOf("showPage('" + page + "'") !== -1 || onclick.indexOf('showPage("' + page + '"') !== -1) {
+					link.classList.add('active');
+				}
+			});
+
+			// إغلاق قائمة الجوال إذا كانت مفتوحة
+			var mobile = document.getElementById('mobile-menu');
+			if (mobile && mobile.classList.contains('active')) mobile.classList.remove('active');
+
+			// سلاسة الانتقال لأعلى
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+			}
+
+		// تبديل قائمة الجوال مع تحديث aria-* وحالة الإخفاء
+		function toggleMobileMenu() {
+			var menu = document.getElementById('mobile-menu');
+			var toggleBtn = document.getElementById('mobile-menu-toggle');
+			if (!menu) return;
+			var isActive = menu.classList.toggle('active');
+			// update aria
+			menu.setAttribute('aria-hidden', String(!isActive));
+			if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(isActive));
+		}
+
+		// إغلاق قائمة الجوال عند الضغط على Escape
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') {
+				var menu = document.getElementById('mobile-menu');
+				var toggleBtn = document.getElementById('mobile-menu-toggle');
+				if (menu && menu.classList.contains('active')) {
+					menu.classList.remove('active');
+					menu.setAttribute('aria-hidden', 'true');
+					if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+				}
+			}
+		});
+
+		// منع السلوك الافتراضي للروابط href="#" لتفادي القفز وإعادة تحميل الصفحة
+		document.addEventListener('click', function(e) {
+			var el = e.target;
+			while (el && el !== document) {
+				if (el.tagName === 'A' && el.getAttribute('href') === '#') {
+					e.preventDefault();
+					break;
+				}
+				el = el.parentNode;
+			}
+		});
+
+		// تهيئة العرض عند التحميل
+		document.addEventListener('DOMContentLoaded', function() {
+			showPage('home');
+		});
+
+        // PMP modal controls
+        function showPmpModal() {
+            var m = document.getElementById('pmp-modal');
+            if (!m) return;
+            m.classList.remove('hidden');
+            // focus for accessibility
+            m.setAttribute('tabindex','-1');
+            m.focus();
+        }
+        function closePmpModal() {
+            var m = document.getElementById('pmp-modal');
+            if (!m) return;
+            m.classList.add('hidden');
+        }
+        // close on overlay click or Escape
+        document.addEventListener('click', function(e){
+            var m = document.getElementById('pmp-modal');
+            if (!m || m.classList.contains('hidden')) return;
+            if (e.target === m) closePmpModal();
+        });
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape') {
+                var m = document.getElementById('pmp-modal');
+                if (m && !m.classList.contains('hidden')) closePmpModal();
+            }
+        });
+	</script>
+</body>
+</html>
