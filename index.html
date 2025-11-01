@@ -2,9 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Pioneers of Top Performance | روّاد الأداء المتميز</title>
-    <meta name="description" content="منصة روّاد الأداء المتميز لإدارة المشاريع، تدريب احترافي وشهادات دولية معتمدة في PMP وإدارة المشاريع.">
+    <meta name="description" content="منصة POTP-PM تقدم دورات احترافية في إدارة المشاريع وفق معايير PMI.">
+    <!-- Updated SEO/meta tags -->
+    <meta name="keywords" content="PMP, PMI-CP, إدارة المشاريع, تدريب, PMI, Libya">
+    <meta name="author" content="Ahmed Aldeib">
+    <meta property="og:title" content="POTP-PM | رواد الأداء المتميز">
+    <meta property="og:description" content="دورات إدارة المشاريع باحترافية عالية.">
+    <meta property="og:url" content="https://potp-pm.ly">
+    <meta property="og:type" content="website">
     <!-- favicon removed as requested -->
     <meta property="og:image" content="https://i.postimg.cc/XYn41mKn/Black-And-White-Modern-Initial-PB-Consulting-Logo-Design-5.png">
     <!-- خطوط عالمية حديثة -->
@@ -93,6 +100,48 @@
         /* Modal (PMP details) */
         .modal-overlay { background: rgba(0,0,0,0.6); }
         .modal-scroll { max-height: 90vh; overflow:auto; -webkit-overflow-scrolling: touch; }
+
+        /* Responsive & mobile (Android / small devices) improvements */
+        img, svg { max-width: 100%; height: auto; display: block; }
+        /* Slightly reduce container padding on small screens to maximize usable space */
+        .container { padding-left: 1rem; padding-right: 1rem; }
+        
+        /* Improve touch targets and tap feedback */
+        button, .mobile-menu a, a[class*="bg-"] {
+            -webkit-tap-highlight-color: rgba(0,0,0,0.08);
+            touch-action: manipulation;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            /* Reduce hero heading and paragraph sizes for narrow screens */
+            .hero-bg h1 { font-size: 2.0rem !important; line-height: 1.08 !important; }
+            .hero-bg p, .hero-bg .text-2xl, .hero-bg .text-xl { font-size: 1rem !important; }
+            /* Make primary CTAs full-width on small screens for easier tapping */
+            .hero-bg .pulse-animation,
+            .hero-bg .pulse-animation + button,
+            .hero-bg button,
+            .gradient-bg .pulse-animation,
+            .gradient-bg button {
+                width: 100% !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            /* Tighter padding inside white cards on small screens */
+            .bg-white.p-8 { padding: 1rem !important; }
+            /* Mobile menu should cover small screens comfortably (full width up to a max) */
+            .mobile-menu { width: 100% !important; max-width: 380px; right: 0; left: auto; }
+            .mobile-menu .p-6 { padding-top: 3.5rem; }
+            /* Slightly increase spacing for card hover blocks to avoid cramped layout */
+            .card-hover { margin-bottom: 0.75rem; }
+        }
+
+        /* Medium devices tweaks */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-bg h1 { font-size: 3.0rem; }
+            .hero-bg p, .hero-bg .text-2xl { font-size: 1.125rem; }
+            .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+        }
     </style>
 </head>
 <body class="bg-[#e8f4ff]">
