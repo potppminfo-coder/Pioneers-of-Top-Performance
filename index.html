@@ -19,17 +19,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Prevent horizontal overflow and enforce box-sizing (fixes Android Chrome zoom/scroll issues) */
+        /* ===== FIX: prevent Android horizontal zoom/scroll issues ===== */
         *, *::before, *::after { box-sizing: border-box; }
         html, body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
-
-        /* Responsive images and safe max sizes */
+        /* make images and svgs fully responsive */
         img, svg { max-width: 100%; height: auto; display: block; max-inline-size: 100%; }
-
-        /* Ensure container uses box-sizing and doesn't cause overflow with padding */
-        .container { box-sizing: border-box; }
-
-        /* Mobile menu override to use viewport-relative size (no fixed px causing overflow) */
+        /* container: avoid padding causing extra width */
+        .container { box-sizing: border-box; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+        /* mobile menu: use vw with a max cap to avoid pushing viewport wider */
         .mobile-menu {
             width: 92vw !important;
             max-width: 420px !important;
@@ -42,10 +39,9 @@
             -webkit-overflow-scrolling: touch;
         }
         .mobile-menu.active { transform: translateX(0); }
-
-        /* Helper class to prevent body scroll when mobile menu open (applied by JS) */
+        /* helper to lock scrolling when overlay/menu is open */
         .no-scroll { overflow: hidden !important; height: 100% !important; }
-
+        /* ===== end fixes ===== */
         body { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #dc2626 100%); }
@@ -1196,8 +1192,8 @@
 
 			// سلاسة الانتقال لأعلى
 			window.scrollTo({ top: 0, behavior: 'smooth' });
-			}
-
+		}
+		
 		// تبديل قائمة الجوال مع تحديث aria-* وحالة الإخفاء
 		function toggleMobileMenu() {
 			var menu = document.getElementById('mobile-menu');
@@ -1207,7 +1203,7 @@
 			// update aria
 			menu.setAttribute('aria-hidden', String(!isActive));
 			if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(isActive));
-			// prevent body scroll / layout shift when menu is open on mobile
+			// prevent body/document scroll / layout shift when menu open (fix Android overflow)
 			try {
 				if (isActive) {
 					document.documentElement.classList.add('no-scroll');
@@ -1216,7 +1212,7 @@
 					document.documentElement.classList.remove('no-scroll');
 					document.body.classList.remove('no-scroll');
 				}
-			} catch (e) {}
+			} catch (e) { /* ignore if not permitted */ }
 		}
 
 		// إغلاق قائمة الجوال عند الضغط على Escape
