@@ -175,6 +175,24 @@
         }
         /* small safety: limit any rogue element width */
         .force-maxwidth { max-width: 100% !important; box-sizing: border-box !important; overflow-wrap: break-word !important; word-break: break-word !important; }
+
+        /* FIX: constrain header logo and allow flex children to shrink (prevents logo causing horizontal overflow on Android) */
+        header nav img[alt="POTP Logo"] {
+            width: clamp(40px, 8.5vw, 64px) !important;
+            max-width: 64px !important;
+            height: auto !important;
+            display: block;
+            flex-shrink: 0;
+            min-height: 0;
+        }
+        /* If debug marker applied to logo, hide its outline/background */
+        header nav img[alt="POTP Logo"].overflow-debug,
+        header nav img[alt="POTP Logo"].force-maxwidth {
+            outline: none !important;
+            background-image: none !important;
+        }
+        /* Allow flex children to shrink to avoid pushing viewport width */
+        header nav > .flex, header nav > .flex > * { min-width: 0; }
     </style>
 </head>
 <body class="bg-[#e8f4ff]">
