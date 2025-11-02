@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#1e3a8a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Pioneers of Top Performance | روّاد الأداء المتميز</title>
     <meta name="description" content="منصة POTP-PM تقدم دورات احترافية في إدارة المشاريع وفق معايير PMI.">
     <!-- Updated SEO/meta tags -->
@@ -21,98 +19,36 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* global improvements for Android / all mobile */
+        /* Prevent horizontal overflow and enforce box-sizing (fixes Android Chrome zoom/scroll issues) */
         *, *::before, *::after { box-sizing: border-box; }
-        html, body { height: 100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-        body { font-family: 'Inter', 'Cairo', Arial, sans-serif; -webkit-text-size-adjust: 100%; }
-        /* layout variables */
-        :root {
-            --max-site-width: 1200px;
-            --container-padding: clamp(0.75rem, 3vw, 1.5rem);
-            --card-radius: 1rem;
-            --safe-top: env(safe-area-inset-top);
-        }
-        /* base container - fluid and centered */
-        .container {
-            max-width: var(--max-site-width);
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--container-padding);
-            padding-right: var(--container-padding);
-            width: 100%;
-        }
-        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #dc2626 100%); }
-        /* hero: fluid typography (avoids overflow on small Android devices) */
-        .hero-bg { background: #ffffff; position: relative; }
-        .hero-bg > .container { position: relative; z-index: 2; padding-top: calc(var(--safe-top) + 2rem); }
-        .hero-bg h1 {
-            font-size: clamp(1.8rem, 6vw, 3.8rem); /* responsive */
-            line-height: 1.05;
-            margin: 0 0 1rem;
-        }
-        .hero-bg p { font-size: clamp(0.95rem, 2.5vw, 1.25rem); }
+        html, body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
 
-        /* ensure images are responsive and keep their aspect */
-        img, svg { max-width: 100%; height: auto; display: block; object-fit: cover; }
-        /* logo sizing responsive (overrides Tailwind fixed classes) */
-        img[alt="POTP Logo"] { width: clamp(40px, 9vw, 96px); height: auto; }
-        /* profile avatar (was w-64 h-64) -> fluid */
-        .relative.w-64.h-64 { width: clamp(144px, 28vw, 256px) !important; height: clamp(144px, 28vw, 256px) !important; }
+        /* Responsive images and safe max sizes */
+        img, svg { max-width: 100%; height: auto; display: block; max-inline-size: 100%; }
 
-        /* cards surfaces use card radius and softer shadow */
-        .bg-white { background-color: #fff; border-radius: var(--card-radius); }
+        /* Ensure container uses box-sizing and doesn't cause overflow with padding */
+        .container { box-sizing: border-box; }
 
-        /* mobile menu: use vw instead of fixed px; allow full-bleed on very small screens */
+        /* Mobile menu override to use viewport-relative size (no fixed px causing overflow) */
         .mobile-menu {
-            position: fixed;
-            top: 0;
+            width: 92vw !important;
+            max-width: 420px !important;
             right: 0;
+            left: auto;
+            top: 0;
             height: 100vh;
-            width: 92vw;           /* flexible width */
-            max-width: 420px;     /* reasonable cap for tablets */
             transform: translateX(100%);
             transition: transform 280ms ease;
             -webkit-overflow-scrolling: touch;
         }
         .mobile-menu.active { transform: translateX(0); }
-        .mobile-menu .p-6 { padding-top: calc(var(--safe-top) + 1.25rem); }
 
-        /* make CTAs flexible (buttons) - replace fixed px widths on small screens */
-        .hero-bg .pulse-animation, .hero-bg button, .gradient-bg button {
-            min-width: 0;
-        }
-
-        /* ensure CTA becomes full width on narrow screens for easy tapping */
-        @media (max-width: 640px) {
-            .hero-bg .pulse-animation, .hero-bg button, .gradient-bg button {
-                display: block;
-                width: 100% !important;
-                box-sizing: border-box;
-            }
-            /* reduce large paddings */
-            .bg-white.p-8 { padding: 1rem !important; }
-        }
-
-        /* small/medium devices tweaks */
-        @media (max-width: 480px) {
-            /* avoid horizontal overflow due to large radiuses/shadows */
-            body { overflow-x: hidden; }
-        }
-
-        /* make sure lists and long text wrap well */
-        .text-ellipsis { word-break: break-word; hyphens: auto; }
-
-        /* keep existing animations and helpers intact */
-        .floating-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-        .pulse-animation { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-
-        /* accessibility: increase tap targets where needed */
-        a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
+        /* Helper class to prevent body scroll when mobile menu open (applied by JS) */
+        .no-scroll { overflow: hidden !important; height: 100% !important; }
 
         body { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #dc2626 100%); }
         /* اجعل خلفية الهيرو بيضاء ناصعة بدل الصورة */
         .hero-bg { 
             background: #ffffff;
@@ -1271,6 +1207,16 @@
 			// update aria
 			menu.setAttribute('aria-hidden', String(!isActive));
 			if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(isActive));
+			// prevent body scroll / layout shift when menu is open on mobile
+			try {
+				if (isActive) {
+					document.documentElement.classList.add('no-scroll');
+					document.body.classList.add('no-scroll');
+				} else {
+					document.documentElement.classList.remove('no-scroll');
+					document.body.classList.remove('no-scroll');
+				}
+			} catch (e) {}
 		}
 
 		// إغلاق قائمة الجوال عند الضغط على Escape
