@@ -28,17 +28,24 @@
         .container { box-sizing: border-box; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
         /* mobile menu: use vw with a max cap to avoid pushing viewport wider */
         .mobile-menu {
-            width: 92vw !important;
-            max-width: 420px !important;
-            right: 0;
-            left: auto;
+            width: 80vw !important;
+            max-width: 400px !important;
+            position: fixed !important;
             top: 0;
-            height: 100vh;
+            right: 0;
+            height: 100vh !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            background-color: #002366 !important; /* keeps dark-blue look; override if needed */
+            z-index: 9999 !important;
             transform: translateX(100%);
-            transition: transform 280ms ease;
+            transition: transform 0.3s ease-in-out;
             -webkit-overflow-scrolling: touch;
         }
-        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu.active,
+        .mobile-menu.menu-open {
+            transform: translateX(0);
+        }
         /* helper to lock scrolling when overlay/menu is open */
         .no-scroll { overflow: hidden !important; height: 100% !important; }
         /* ===== end fixes ===== */
@@ -246,7 +253,7 @@
         </nav>
 
         <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-blue-900 shadow-2xl lg:hidden" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="mobile-menu lg:hidden shadow-2xl" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-xl font-bold text-white">القائمة</h2>
