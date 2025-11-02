@@ -1337,39 +1337,6 @@
 			// Expose helper to console for manual inspection
 			window.__findOverflow = function(autoFix){ return findAndFixOverflow(Boolean(autoFix)); };
 		})();
-		// Toggle accordion panel by id (open/close + accessibility + smooth height)
-		function toggleAccordion(id) {
-			var panel = document.getElementById(id);
-			if (!panel) return;
-			var btn = document.querySelector('[aria-controls="'+id+'"]');
-			var isOpen = panel.classList.contains('open');
-			if (isOpen) {
-				// close
-				panel.classList.remove('open');
-				panel.setAttribute('aria-hidden', 'true');
-				if (btn) btn.setAttribute('aria-expanded', 'false');
-				// collapse smoothly
-				panel.style.maxHeight = panel.scrollHeight + 'px'; // set current height
-				// allow the browser to register the height, then set to 0
-				requestAnimationFrame(function(){
-					panel.style.maxHeight = '0px';
-				});
-			} else {
-				// open
-				panel.classList.add('open');
-				panel.setAttribute('aria-hidden', 'false');
-				if (btn) btn.setAttribute('aria-expanded', 'true');
-				// expand smoothly to its scrollHeight
-				panel.style.maxHeight = panel.scrollHeight + 'px';
-			}
-		}
-
-		// Ensure open panels keep correct maxHeight on resize (responsive)
-		window.addEventListener('resize', function(){
-			document.querySelectorAll('.accordion-panel.open').forEach(function(panel){
-				panel.style.maxHeight = panel.scrollHeight + 'px';
-			});
-		});
 	</script>
 </body>
 </html>
