@@ -165,6 +165,16 @@
             .hero-bg p, .hero-bg .text-2xl { font-size: 1.125rem; }
             .container { padding-left: 1.25rem; padding-right: 1.25rem; }
         }
+
+        /* extra android fixes */
+        html, body { overflow-x: hidden !important; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
+        /* visual helper for debugging overflow issues */
+        .overflow-debug {
+            outline: 2px dashed rgba(255,0,0,0.95) !important;
+            background-image: linear-gradient(90deg, rgba(255,0,0,0.04), transparent) !important;
+        }
+        /* small safety: limit any rogue element width */
+        .force-maxwidth { max-width: 100% !important; box-sizing: border-box !important; overflow-wrap: break-word !important; word-break: break-word !important; }
     </style>
 </head>
 <body class="bg-[#e8f4ff]">
@@ -1271,6 +1281,44 @@
                 if (m && !m.classList.contains('hidden')) closePmpModal();
             }
         });
+
+		// Debug & soft-fix for horizontal overflow on Android Chrome
+		(function(){
+			function findAndFixOverflow(autoFix){
+				var vw = document.documentElement.clientWidth || window.innerWidth;
+				var found = [];
+				document.querySelectorAll('*').forEach(function(el){
+					// skip <html> and <body>
+					if (!el || el === document.documentElement || el === document.body) return;
+					var sw = el.scrollWidth;
+					if (sw > vw + 1) { // element wider than viewport
+						found.push({el: el, w: sw});
+						// add visual marker
+						el.classList.add('overflow-debug');
+						if (autoFix) {
+							el.classList.add('force-maxwidth');
+							// ensure no accidental margin pushing
+							el.style.marginLeft = el.style.marginLeft || '';
+							el.style.marginRight = el.style.marginRight || '';
+						}
+					}
+				});
+				if (found.length) {
+					console.warn('Overflow elements detected (w > vw):', found.map(function(f){ return [f.el.tagName, f.el.className, f.w]; }));
+				} else {
+					console.log('No overflow elements detected.');
+				}
+				return found;
+			}
+
+			// Run on load and on resize/orientation change
+			window.addEventListener('load', function(){ findAndFixOverflow(true); }, {passive:true});
+			window.addEventListener('resize', function(){ setTimeout(function(){ findAndFixOverflow(true); }, 120); }, {passive:true});
+			window.addEventListener('orientationchange', function(){ setTimeout(function(){ findAndFixOverflow(true); }, 250); }, {passive:true});
+
+			// Expose helper to console for manual inspection
+			window.__findOverflow = function(autoFix){ return findAndFixOverflow(Boolean(autoFix)); };
+		})();
 	</script>
 </body>
 </html>
