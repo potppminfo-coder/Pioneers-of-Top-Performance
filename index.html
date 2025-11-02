@@ -19,29 +19,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== FIX: prevent Android horizontal zoom/scroll issues ===== */
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
-        /* make images and svgs fully responsive */
-        img, svg { max-width: 100%; height: auto; display: block; max-inline-size: 100%; }
-        /* container: avoid padding causing extra width */
-        .container { box-sizing: border-box; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
-        /* mobile menu: use vw with a max cap to avoid pushing viewport wider */
-        .mobile-menu {
-            width: 92vw !important;
-            max-width: 420px !important;
-            right: 0;
-            left: auto;
-            top: 0;
-            height: 100vh;
-            transform: translateX(100%);
-            transition: transform 280ms ease;
-            -webkit-overflow-scrolling: touch;
-        }
-        .mobile-menu.active { transform: translateX(0); }
-        /* helper to lock scrolling when overlay/menu is open */
-        .no-scroll { overflow: hidden !important; height: 100% !important; }
-        /* ===== end fixes ===== */
         body { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Cairo', Arial, sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #dc2626 100%); }
@@ -165,16 +142,6 @@
             .hero-bg p, .hero-bg .text-2xl { font-size: 1.125rem; }
             .container { padding-left: 1.25rem; padding-right: 1.25rem; }
         }
-
-        /* extra android fixes */
-        html, body { overflow-x: hidden !important; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
-        /* visual helper for debugging overflow issues */
-        .overflow-debug {
-            outline: 2px dashed rgba(255,0,0,0.95) !important;
-            background-image: linear-gradient(90deg, rgba(255,0,0,0.04), transparent) !important;
-        }
-        /* small safety: limit any rogue element width */
-        .force-maxwidth { max-width: 100% !important; box-sizing: border-box !important; overflow-wrap: break-word !important; word-break: break-word !important; }
     </style>
 </head>
 <body class="bg-[#e8f4ff]">
@@ -1202,8 +1169,8 @@
 
 			// سلاسة الانتقال لأعلى
 			window.scrollTo({ top: 0, behavior: 'smooth' });
-		}
-		
+			}
+
 		// تبديل قائمة الجوال مع تحديث aria-* وحالة الإخفاء
 		function toggleMobileMenu() {
 			var menu = document.getElementById('mobile-menu');
@@ -1213,16 +1180,6 @@
 			// update aria
 			menu.setAttribute('aria-hidden', String(!isActive));
 			if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(isActive));
-			// prevent body/document scroll / layout shift when menu open (fix Android overflow)
-			try {
-				if (isActive) {
-					document.documentElement.classList.add('no-scroll');
-					document.body.classList.add('no-scroll');
-				} else {
-					document.documentElement.classList.remove('no-scroll');
-					document.body.classList.remove('no-scroll');
-				}
-			} catch (e) { /* ignore if not permitted */ }
 		}
 
 		// إغلاق قائمة الجوال عند الضغط على Escape
@@ -1281,44 +1238,6 @@
                 if (m && !m.classList.contains('hidden')) closePmpModal();
             }
         });
-
-		// Debug & soft-fix for horizontal overflow on Android Chrome
-		(function(){
-			function findAndFixOverflow(autoFix){
-				var vw = document.documentElement.clientWidth || window.innerWidth;
-				var found = [];
-				document.querySelectorAll('*').forEach(function(el){
-					// skip <html> and <body>
-					if (!el || el === document.documentElement || el === document.body) return;
-					var sw = el.scrollWidth;
-					if (sw > vw + 1) { // element wider than viewport
-						found.push({el: el, w: sw});
-						// add visual marker
-						el.classList.add('overflow-debug');
-						if (autoFix) {
-							el.classList.add('force-maxwidth');
-							// ensure no accidental margin pushing
-							el.style.marginLeft = el.style.marginLeft || '';
-							el.style.marginRight = el.style.marginRight || '';
-						}
-					}
-				});
-				if (found.length) {
-					console.warn('Overflow elements detected (w > vw):', found.map(function(f){ return [f.el.tagName, f.el.className, f.w]; }));
-				} else {
-					console.log('No overflow elements detected.');
-				}
-				return found;
-			}
-
-			// Run on load and on resize/orientation change
-			window.addEventListener('load', function(){ findAndFixOverflow(true); }, {passive:true});
-			window.addEventListener('resize', function(){ setTimeout(function(){ findAndFixOverflow(true); }, 120); }, {passive:true});
-			window.addEventListener('orientationchange', function(){ setTimeout(function(){ findAndFixOverflow(true); }, 250); }, {passive:true});
-
-			// Expose helper to console for manual inspection
-			window.__findOverflow = function(autoFix){ return findAndFixOverflow(Boolean(autoFix)); };
-		})();
 	</script>
 </body>
 </html>
